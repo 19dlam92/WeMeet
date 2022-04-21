@@ -14,7 +14,7 @@ function App() {
         <h1>WeMeet</h1>
         <AllProfiles></AllProfiles>
         <Switch>
-          <Router>
+          <Router exact path = "/">
 
           </Router>
         </Switch>

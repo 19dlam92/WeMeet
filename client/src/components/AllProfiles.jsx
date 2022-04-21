@@ -1,27 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
 const AllProfiles = () => {
 
+    const [profileList, setProfileList] = useState([]);
 
-
-
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/DatingProfile")
+        .then((response) => {
+            console.log("~~~~RESPONSE~~~~", response)
+            setProfileList(response.data.results)
+        })
+        .catch((err) => {
+            console.error("ERRRRRRRRRRORRRRRRRRRRRRR",err)
+        })
+    }, [])
 
     return(
         <>
             <h1>WeMeet</h1>
-            <div className="nav-bar d-flex">
-                <div className="nav-bar-links d-flex">
-                    <h2>We<span style="color: blue">Meet</span></h2>
-                    <Link><h3>Discover</h3></Link>
-                    <Link><h3>Questions</h3></Link>
-                    <Link><h3>Likes</h3></Link>
-                    <Link><h3>Messages</h3></Link>
+            <div className="container">
+                <div className="nav-bar d-flex">
+                    <div className="nav-bar-links d-flex">
+                        <h2>We<span style="color: blue">Meet</span></h2>
+                        <Link><h3>Discover</h3></Link>
+                        <Link><h3>Questions</h3></Link>
+                        <Link><h3>Likes</h3></Link>
+                        <Link><h3>Messages</h3></Link>
+                    </div>
+                    <div className="nav-bar-profile d-flex">
+                        <Link><h3>Profile</h3></Link>
+                    </div>
                 </div>
-                <div className="nav-bar-profile d-flex">
-                    <Link><h3>Profile</h3></Link>
-                </div>
+                {
+                    profileList.map((profileItem) => {
+                        <img src="" alt="" />
+                    })
+                }
             </div>
         </>
     )

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const db_name = "datingProfileDatabase"
+const db_name = "weMeetDatabase"
 
 mongoose.connect(`mongodb+srv://root:root@reactdojo.f237n.mongodb.net/${db_name}?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
