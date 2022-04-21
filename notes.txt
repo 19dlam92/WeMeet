@@ -3,3 +3,10 @@ FEATURES
 image upload
 image carousel
 payment
+onScroll = more profiles load
+    flex the profiles into boxes with minimal info
+    refer to okc
+textboxes
+    X characters left in space
+<select></select>
+    able to select multiple if applicable
