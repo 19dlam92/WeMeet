@@ -3,10 +3,22 @@ FEATURES
 image upload
 image carousel
 payment
-onScroll = more profiles load
+login registration
+reusing components (?)
+    are there multiple of the same component?
+main page
+    display all created profiles
+    onScroll = more profiles load
     flex the profiles into boxes with minimal info
+    .map profiles
     refer to okc
+    <img src="" alt="" height="Xpx" width="Xpx"></img>
 textboxes
     X characters left in space
 <select></select>
     able to select multiple if applicable
+messaging
+    may require socket.io
+swipe left / swipe right function
+filter button
+    only displays what you've "filtered"
