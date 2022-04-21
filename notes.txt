@@ -1,0 +1,5 @@
+FEATURES
+
+image upload
+image carousel
+payment

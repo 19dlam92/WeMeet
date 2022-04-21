@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const { required } = require('nodemon/lib/config');
 
-const DatingSiteSchema = new mongoose.Schema({
+const DatingProfileSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: [true, "Please enter your first name"],
@@ -41,5 +40,5 @@ const DatingSiteSchema = new mongoose.Schema({
     }
 }, { timestamps: true })
 
-const DatingSite = mongoose.model('DatingSite', DatingSiteSchema);
-module.exports = DatingSite;
+const DatingProfile = mongoose.model('DatingProfile', DatingProfileSchema);
+module.exports = DatingProfile;

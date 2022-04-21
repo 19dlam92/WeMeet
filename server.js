@@ -6,6 +6,6 @@ app.use( cors() )
 app.use( express.json() );
 app.use( express.urlencoded({ extended: true }) );
 require("./server/config/mongoose.config")
-require("./server/routes/productManager.route")(app)
+require("./server/routes/datingProfile.route")(app)
 
 app.listen( port, () => console.log(`Listening on port: ${ port }`) );
