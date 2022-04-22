@@ -7,6 +7,7 @@ const CreateAccount = (props) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [age, setAge] = useState("");
+    const [gender, setGender] = useState("");
     const [language, setLanguage] = useState("");
     const [orientation, setOrientation] = useState("");
     const [ethnicity, setEthnicity] = useState("");
@@ -18,9 +19,10 @@ const CreateAccount = (props) => {
     const formHandler = (e) => {
         e.preventDefault();
         const formInfo = { 
-            firstName, 
-            lastName, 
-            age, 
+            firstName,
+            lastName,
+            age,
+            gender,
             language, 
             orientation,
             ethnicity,
@@ -45,7 +47,7 @@ const CreateAccount = (props) => {
 
     return(
         <>
-            <form onSubmit = { formHandler }>
+            <form className="" onSubmit = { formHandler }>
                 <div className="form-group">
                     <label>First Name</label>
                     <input className="form-control" type="text" onChange = { (e) => setFirstName(e.target.value) } value = { firstName }/>
@@ -61,18 +63,29 @@ const CreateAccount = (props) => {
                     <input className="form-control" type="text" onChange = { (e) => setAge(e.target.value) } value = { age }/>
                     <p className="text-danger">{ formErrors.age?.message }</p>
                 </div>
-                <div className="form-group">
-                    <select name="language" id="language" >
+                <div className="form-group mt-3">
+                    <select name="gender" id="gender" onChange = { (e) => setGender(e.target.value) } value = { gender }>
+                        <option value="select-one">Select Gender</option>
+                        <option value="woman">Woman</option>
+                        <option value="man">Man</option>
+                        <option value="trans-woman">Trans Woman</option>
+                        <option value="trans-man">Trans Man</option>
+                        <option value="non-binary">Non-binary</option>
+                    </select>
+                </div>
+                <div className="form-group mt-3">
+                    <select name="language" id="language" onChange = { (e) => setLanguage(e.target.value) } value = { language }>
+                        <option value="select-one">Select Language</option>
                         <option value="english">English</option>
                         <option value="spanish">Spanish</option>
                         <option value="vietnamese">Vietnamese</option>
                         <option value="chinese">Chinese</option>
                         <option value="indian">Indian</option>
                     </select>
-                    <p className="text-danger">{ formErrors.language?.message }</p>
                 </div>
-                <div className="form-group">
-                    <select name="orientation" id="orientation" >
+                <div className="form-group mt-3">
+                    <select name="orientation" id="orientation" onChange = { (e) => setOrientation(e.target.value) } value = { orientation }>
+                        <option value="select-one">Select Orientation</option>
                         <option value="straight">Straight</option>
                         <option value="gay">Gay</option>
                         <option value="bisexual">Bisexual</option>
@@ -80,10 +93,10 @@ const CreateAccount = (props) => {
                         <option value="demisexual">Demisexual</option>
                         <option value="questioning">Questioning</option>
                     </select>
-                    <p className="text-danger">{ formErrors.orientation?.message }</p>
                 </div>
-                <div className="form-group">
-                    <select name="ethnicity" id="ethnicity" >
+                <div className="form-group mt-3">
+                    <select name="ethnicity" id="ethnicity" onChange = { (e) => setEthnicity(e.target.value) } value = { ethnicity }>
+                        <option value="select-one">Select Ethnicity</option>
                         <option value="asian">Asian</option>
                         <option value="black">Black</option>
                         <option value="hispanic/latin">Hispanic/Latin</option>
@@ -91,10 +104,10 @@ const CreateAccount = (props) => {
                         <option value="white">White</option>
                         <option value="other">Other</option>
                     </select>
-                    <p className="text-danger">{ formErrors.ethnicity?.message }</p>
                 </div>
-                <div className="form-group">
-                    <select name="employment" id="employment" >
+                <div className="form-group mt-3">
+                    <select name="employment" id="employment" onChange = { (e) => setEmployment(e.target.value) } value = { employment }>
+                        <option value="select-one">Select Employment</option>
                         <option value="employed-full-time">Employed Full-Time</option>
                         <option value="employed-part-time">Employed Part-Time</option>
                         <option value="freelance-worker">Freelance Worker</option>
@@ -102,10 +115,10 @@ const CreateAccount = (props) => {
                         <option value="unemployed">Unemployed</option>
                         <option value="retired">Retired</option>
                     </select>
-                    <p className="text-danger">{ formErrors.employment?.message }</p>
                 </div>
-                <div className="form-group">
-                    <select name="astrologicalSign" id="astrologicalSign" >
+                <div className="form-group mt-3">
+                    <select name="astrologicalSign" id="astrologicalSign" onChange = { (e) => setAstrologicalSign(e.target.value) } value = { astrologicalSign }>
+                        <option value="select-one">Select Sign</option>
                         <option value="aquarius">Aquarius</option>
                         <option value="pisces">Pisces</option>
                         <option value="aries">Aries</option>
@@ -119,9 +132,8 @@ const CreateAccount = (props) => {
                         <option value="sagittarius">Sagittarius</option>
                         <option value="capricorn">Capricorn</option>
                     </select>
-                    <p className="text-danger">{ formErrors.astrologicalSign?.message }</p>
                 </div>
-                <input type="submit" value="Create Account"/>
+                <input className="btn btn-info mt-3" type="submit" value="Create Account"/>
             </form>
         </>
     )

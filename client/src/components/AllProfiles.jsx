@@ -24,29 +24,23 @@ const AllProfiles = (props) => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <Link className="nav-link" href="">Discover</Link>
+                            <a className="nav-link" href="">Discover</a>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" href="">Questions</Link>
+                            <a className="nav-link" href="">Questions</a>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" href="">Likes</Link>
+                            <a className="nav-link" href="">Likes</a>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" href="">Messages</Link>
+                            <a className="nav-link" href="">Messages</a>
                         </li>
                         <li className="nav-item align-right">
-                            <Link className="nav-link" href="/create">Profile</Link>
+                            <a className="nav-link" href="/create">Profile</a>
                         </li>
                     </ul>
                 </div>
             </nav>
-            {
-                profileList.map((profileItem) => {
-                    <img src="" alt="" height="" width=""/>
-                    // src="" passes in { profileItem.whateverImCallingTheImages }
-                })
-            }
         </>
     )
 }

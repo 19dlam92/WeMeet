@@ -11,6 +11,12 @@ main page
     onScroll = more profiles load
     flex the profiles into boxes with minimal info
     .map profiles
+        {
+            profileList.map((profileItem) => {
+                <img src="" alt="" height="" width=""/>
+                // src="" passes in { profileItem.whateverImCallingTheImages }
+            })
+        }
     refer to okc
     <img src="" alt="" height="Xpx" width="Xpx"></img>
     https://www.youtube.com/watch?v=gnkrDse9QKc

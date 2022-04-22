@@ -16,21 +16,17 @@ const DatingProfileSchema = new mongoose.Schema({
         required: [true, "Please enter your age"],
         min: [0.01, "This section MUST be greater than 0"]
     },
-    // gender: {
-    //     type: Boolean,
-    //     required: [true, "Please select a gender"]
-    // },
+    gender: {
+        type: String
+    },
     language: {
-        type: String,
-        required: [true, "Please select your language"]
+        type: String
     },
     orientation: {
-        type: String,
-        required: [true, "Please select your orientation"]
+        type: String
     },
     ethnicity: {
-        type: String,
-        required: [true, "Please select your ethnicity"]
+        type: String
     },
     employment: {
         type: String

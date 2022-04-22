@@ -3,7 +3,7 @@ import {
   BrowserRouter,
   Link,
   Switch,
-  Router
+  Route
 } from 'react-router-dom'
 import { useState } from 'react';
 import AllProfiles from './components/AllProfiles';
@@ -14,19 +14,18 @@ function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   return (
-    <BrowserRouter>
       <div className="App container">
-        <AllProfiles/>
-        <Switch>
-          <Router exact path = "/create">
-            <CreateAccount formSubmitted = { formSubmitted } setFormSubmitted = { setFormSubmitted }/>
-          </Router>
-          <Router exact path = "">
+        <BrowserRouter>
+          <AllProfiles/>
+          <CreateAccount formSubmitted = { formSubmitted} setFormSubmitted = { setFormSubmitted }/>
+          <Switch>
+            <Route exact path="">
 
-          </Router>
-        </Switch>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+
       </div>
-    </BrowserRouter>
   );
 }
 
