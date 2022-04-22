@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-const AllProfiles = () => {
+const AllProfiles = (props) => {
 
     const [profileList, setProfileList] = useState([]);
 
@@ -13,27 +13,40 @@ const AllProfiles = () => {
             setProfileList(response.data.results)
         })
         .catch((err) => {
-            console.error("ERRRRRRRRRRORRRRRRRRRRRRR",err)
+            console.error("ERRRRRRRRRRORRRRRRRRRRRRR", err)
         })
-    }, [])
+    }, [props.formSubmitted])
 
     return(
         <>
-            <div className="container">
-                <div className="nav-bar d-flex">
-                    <div className="nav-bar-links d-flex">
-                        <h2>WeMeet</h2>
-                        <h4>Discover</h4>
-                        <h4>Questions</h4>
-                        <h4>Likes</h4>
-                        <h4>Messages</h4>
-                    </div>
-                    <div className="nav-bar-profile d-flex">
-                        <h4>Profile</h4>
-                    </div>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <a className="navbar-brand" href="">WeMeet</a>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <a className="nav-link" href="">Discover</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="">Questions</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="">Likes</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="">Messages</a>
+                        </li>
+                        <li className="nav-item align-right">
+                            <a className="nav-link" href="">Profile</a>
+                        </li>
+                    </ul>
                 </div>
-                
-            </div>
+            </nav>
+            {
+                profileList.map((profileItem) => {
+                    <img src="" alt="" height="" width=""/>
+                    // src="" passes in { profileItem.whateverImCallingTheImages }
+                })
+            }
         </>
     )
 }
