@@ -5,17 +5,21 @@ import {
   Switch,
   Router
 } from 'react-router-dom'
+import { useState } from 'react';
 import AllProfiles from './components/AllProfiles';
 import CreateAccount from './components/CreateAccount';
 
 function App() {
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   return (
     <BrowserRouter>
       <div className="App container">
-        <AllProfiles></AllProfiles>
+        <AllProfiles/>
         <Switch>
           <Router exact path = "/create">
-            <CreateAccount></CreateAccount>
+            <CreateAccount formSubmitted = { formSubmitted } setFormSubmitted = { setFormSubmitted }/>
           </Router>
           <Router exact path = "">
 

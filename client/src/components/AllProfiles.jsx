@@ -24,19 +24,19 @@ const AllProfiles = (props) => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="">Discover</a>
+                            <Link className="nav-link" href="">Discover</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="">Questions</a>
+                            <Link className="nav-link" href="">Questions</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="">Likes</a>
+                            <Link className="nav-link" href="">Likes</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="">Messages</a>
+                            <Link className="nav-link" href="">Messages</Link>
                         </li>
                         <li className="nav-item align-right">
-                            <a className="nav-link" href="">Profile</a>
+                            <Link className="nav-link" href="/create">Profile</Link>
                         </li>
                     </ul>
                 </div>
