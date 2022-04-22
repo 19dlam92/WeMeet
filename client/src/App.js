@@ -9,17 +9,14 @@ import AllProfiles from './components/AllProfiles';
 
 function App() {
   return (
-    <div className="App container">
-      <BrowserRouter>
-        <h1>WeMeet</h1>
+    <BrowserRouter>
+      <div className="App container">
         <AllProfiles></AllProfiles>
         <Switch>
-          <Router exact path = "/">
-
-          </Router>
+          
         </Switch>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

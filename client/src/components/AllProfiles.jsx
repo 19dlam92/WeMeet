@@ -19,25 +19,20 @@ const AllProfiles = () => {
 
     return(
         <>
-            <h1>WeMeet</h1>
             <div className="container">
                 <div className="nav-bar d-flex">
                     <div className="nav-bar-links d-flex">
-                        <h2>We<span style="color: blue">Meet</span></h2>
-                        <Link><h3>Discover</h3></Link>
-                        <Link><h3>Questions</h3></Link>
-                        <Link><h3>Likes</h3></Link>
-                        <Link><h3>Messages</h3></Link>
+                        <h2>WeMeet</h2>
+                        <h4>Discover</h4>
+                        <h4>Questions</h4>
+                        <h4>Likes</h4>
+                        <h4>Messages</h4>
                     </div>
                     <div className="nav-bar-profile d-flex">
-                        <Link><h3>Profile</h3></Link>
+                        <h4>Profile</h4>
                     </div>
                 </div>
-                {
-                    profileList.map((profileItem) => {
-                        <img src="" alt="" />
-                    })
-                }
+                
             </div>
         </>
     )
