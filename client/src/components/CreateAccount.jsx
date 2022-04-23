@@ -66,10 +66,10 @@ const CreateAccount = (props) => {
                 <div className="form-group mt-3">
                     <select name="gender" id="gender" onChange = { (e) => setGender(e.target.value) } value = { gender }>
                         <option value="select-one">Select Gender</option>
-                        <option value="woman">Woman</option>
-                        <option value="man">Man</option>
-                        <option value="trans-woman">Trans Woman</option>
-                        <option value="trans-man">Trans Man</option>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="trans-female">Trans Female</option>
+                        <option value="trans-male">Trans Male</option>
                         <option value="non-binary">Non-binary</option>
                     </select>
                 </div>
@@ -88,6 +88,7 @@ const CreateAccount = (props) => {
                         <option value="select-one">Select Orientation</option>
                         <option value="straight">Straight</option>
                         <option value="gay">Gay</option>
+                        <option value="lesbian">Lesbian</option>
                         <option value="bisexual">Bisexual</option>
                         <option value="asexual">Asexual</option>
                         <option value="demisexual">Demisexual</option>
