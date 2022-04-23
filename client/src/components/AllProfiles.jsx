@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const AllProfiles = (props) => {
 
     const [profileList, setProfileList] = useState([]);
+    const { id } = useState();
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/DatingProfile")
@@ -19,10 +21,11 @@ const AllProfiles = (props) => {
     return(
         <>
             {
-                profileList.map((profileItem, index) => {
+                profileList.map((profileItem) => {
                     return(
-                        <div key = { index }>
-                            <p>Psuedo Data: { profileItem.firstName }</p>
+                        <div key = { profileItem._id }>
+                            <Link to href = { `/profile/details/${ profileItem._id }` }>Psuedo Data: { profileItem.firstName }</Link>
+                            <Link><img src="" alt="" height="" width=""/></Link>
                         </div>
                     )
                 })
