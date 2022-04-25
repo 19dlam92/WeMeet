@@ -10,6 +10,7 @@ import NavBar from './components/NavBar';
 import AllProfiles from './components/AllProfiles';
 import CreateAccount from './components/CreateAccount';
 import ProfileDetails from './components/ProfileDetails';
+import ProfileSettings from './components/ProfileSettings';
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
               <ProfileDetails/>
             </Route>
             <Route exact path = "/profile/settings">
-
+              <ProfileSettings/>
             </Route>
           </Switch>
         </BrowserRouter>
