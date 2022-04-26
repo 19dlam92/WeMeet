@@ -21,6 +21,7 @@ function App() {
         <BrowserRouter>
           <NavBar/>
           <AllProfiles/>
+              <ProfileDetails/>
           <Switch>
             <Route exact path = "">
 
@@ -29,7 +30,6 @@ function App() {
               <CreateAccount formSubmitted = { formSubmitted} setFormSubmitted = { setFormSubmitted }/>
             </Route>
             <Route exact path = "/profile/details/:id">
-              <ProfileDetails/>
             </Route>
             <Route exact path = "/profile/settings">
               <ProfileSettings/>

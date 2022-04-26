@@ -1,4 +1,4 @@
-FEATURES
+FEATURES / COMMENT OUT WHATS COMPLETED
 
 image upload
 image carousel

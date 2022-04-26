@@ -1,9 +1,22 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 const ProfileSettings = () => {
 
+    const { id } = useParams();
+    const history = useHistory();
 
 
+    const deletehandler = () => {
+        axios.delete(`http://localhost:8000/profile/settings/${id}`)
+            .then((response) => {
+                history.push("/")
+            })
+            .catch((err) => {
+                console.error(err)
+            })
+    }
 
     return(
         <>
