@@ -33,3 +33,6 @@ messaging
 swipe left / swipe right function
 filter button
     only displays what you've "filtered"
+
+
+formSubmitted = { formSubmitted } setFormSubmitted = { setFormSubmitted }

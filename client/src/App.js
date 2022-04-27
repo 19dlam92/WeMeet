@@ -19,10 +19,13 @@ function App() {
   return (
       <div className="App container">
         <BrowserRouter>
+      
           <NavBar/>
-          <AllProfiles/>
-              <ProfileDetails/>
           <Switch>
+            <Route exact path = "/">
+              <AllProfiles/>
+
+            </Route>
             <Route exact path = "/discover">
 
             </Route>
@@ -36,13 +39,14 @@ function App() {
 
             </Route>
             <Route exact path = "/profile/details/:id">
+              <ProfileDetails/>
 
             </Route>
             <Route exact path = "/login">
 
             </Route>
             <Route exact path = "/create">
-              <CreateAccount formSubmitted = { formSubmitted} setFormSubmitted = { setFormSubmitted }/>
+              <CreateAccount />
             </Route>
             <Route exact path = "/profile/settings">
               <ProfileSettings/>

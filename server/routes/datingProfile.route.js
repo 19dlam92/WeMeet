@@ -1,9 +1,9 @@
 const DatingProfileController = require('../controllers/datingProfile.controller');
 
 module.exports = (app) => {
-    app.get("/api/DatingProfile", DatingProfileController.findAllDatingProfiles);
-    app.get("/api/DatingProfile/:id", DatingProfileController.findOneDatingProfile);
-    app.put("/api/DatingProfile/:id", DatingProfileController.updateOneDatingProfile);
-    app.post("/api/DatingProfile", DatingProfileController.createNewDatingProfile);
-    app.delete("/api/DatingProfile/:id", DatingProfileController.deleteOneDatingProfile);
+    app.get("/api/datingProfile", DatingProfileController.findAllDatingProfiles);
+    app.get("/api/datingProfile/:id", DatingProfileController.findOneDatingProfile);
+    app.put("/api/datingProfile/:id", DatingProfileController.updateOneDatingProfile);
+    app.post("/api/datingProfile", DatingProfileController.createNewDatingProfile);
+    app.delete("/api/datingProfile/:id", DatingProfileController.deleteOneDatingProfile);
 }

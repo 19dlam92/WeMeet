@@ -30,7 +30,7 @@ const CreateAccount = (props) => {
             astrologicalSign,
         };
 
-        axios.post("http://localhost:8000/api/DatingProfile", formInfo)
+        axios.post("http://localhost:8000/api/datingProfile", formInfo)
             .then((response) => {
                 console.log("~~~~RESPONSE~~~~", response)
                 if (response.data.error) {

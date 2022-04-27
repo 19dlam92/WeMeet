@@ -10,7 +10,7 @@ const ProfileDetails = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get(`http://localhost8000//profile/details/${id}`)
+        axios.get(`http://localhost8000/profile/details/${id}`)
             .then((response) => {
                 setProfileDetails(response.data.results)
             })
@@ -44,9 +44,9 @@ const ProfileDetails = () => {
                     </div>
                     <div className="navbar-settings d-flex">
                         <i className=""></i>
-                        <button className="btn btn-info w-100" onClick ><h3>Preferences</h3></button>
+                        <button className="btn btn-info w-100"><h3>Preferences</h3></button>
                         <i className=""></i>
-                        <button className="btn btn-info w-100" onClick ><h3>Settings</h3></button>
+                        <button className="btn btn-info w-100"><h3>Settings</h3></button>
                     </div>
                 </div>
 
