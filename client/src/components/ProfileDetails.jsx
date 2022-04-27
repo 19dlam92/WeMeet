@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const ProfileDetails = () => {
@@ -24,19 +25,33 @@ const ProfileDetails = () => {
                 <div className="navbar-profile bg-dark text-light">
                     <div>
                         <h1>ProfileDetails</h1>
-                        <img src="" alt="" height="" width=""/>
-                        {/* image upload here */}
+                        <i className="fa-solid fa-chevron-right"></i>
+                        {/* {
+                            profileDetails.map((profileImage, _id) => {
+                                return(
+                                    <div className="wrapper">
+                                        <section id="section1">
+                                            <div key = { _id }>
+                                                <h3>Image Carousel</h3>
+                                                <img src = { profileImage.upload } alt="Describe Image" height="" width=""/>
+                                            </div>
+                                        </section>
+                                    </div>
+                                )
+                            })
+                        } */}
+                        
                     </div>
-                    <div className="navbar-settings d-flex justify-content-around">
-                        <img src="" alt="" />
-                        <Link to href="/profile/preferences"><h3>Preferences</h3></Link>
-                        <img src="" alt="" />
-                        <Link to href="/profile/settings"><h3>Settings</h3></Link>
+                    <div className="navbar-settings d-flex">
+                        <i className=""></i>
+                        <button className="btn btn-info w-100" onClick ><h3>Preferences</h3></button>
+                        <i className=""></i>
+                        <button className="btn btn-info w-100" onClick ><h3>Settings</h3></button>
                     </div>
                 </div>
 
                 <div className="premium bg-dark mt-3 h-50">
-                    <Link to href="/profile/premium"><h3>WeMeet Premium</h3></Link>
+                    <button className="btn btn-info w-100"><h3>WeMeet Premium</h3></button>
                 </div>
                 <div className="profile-descriptionsjustify-content-center mt-3">
                     <div className="description-1">

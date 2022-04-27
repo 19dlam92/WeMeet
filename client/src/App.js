@@ -23,13 +23,26 @@ function App() {
           <AllProfiles/>
               <ProfileDetails/>
           <Switch>
-            <Route exact path = "">
+            <Route exact path = "/discover">
+
+            </Route>
+            <Route exact path = "/questions">
+
+            </Route>
+            <Route exact path = "/likes">
+
+            </Route>
+            <Route exact path = "/messages">
+
+            </Route>
+            <Route exact path = "/profile/details/:id">
+
+            </Route>
+            <Route exact path = "/login">
 
             </Route>
             <Route exact path = "/create">
               <CreateAccount formSubmitted = { formSubmitted} setFormSubmitted = { setFormSubmitted }/>
-            </Route>
-            <Route exact path = "/profile/details/:id">
             </Route>
             <Route exact path = "/profile/settings">
               <ProfileSettings/>
