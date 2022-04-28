@@ -19,11 +19,10 @@ function App() {
   return (
       <div className="App container">
         <BrowserRouter>
-      
           <NavBar/>
+              <AllProfiles/>
           <Switch>
             <Route exact path = "/">
-              <AllProfiles/>
 
             </Route>
             <Route exact path = "/discover">

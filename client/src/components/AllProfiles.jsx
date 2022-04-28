@@ -21,8 +21,7 @@ const AllProfiles = (props) => {
 
     return(
         <>
-            <h1>logging with nicole</h1>
-            {/* {
+            {
                 profileList.map((profileItem) => {
                     return(
                         <div key = { profileItem._id }>
@@ -31,7 +30,7 @@ const AllProfiles = (props) => {
                         </div>
                     )
                 })
-            } */}
+            }
         </>
     )
 }
