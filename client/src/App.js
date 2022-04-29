@@ -14,13 +14,13 @@ import ProfileSettings from './components/ProfileSettings';
 
 function App() {
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  // const [formSubmitted, setFormSubmitted] = useState(false);
 
   return (
       <div className="App container">
         <BrowserRouter>
           <NavBar/>
-              <AllProfiles/>
+          <AllProfiles/>
           <Switch>
             <Route exact path = "/">
 

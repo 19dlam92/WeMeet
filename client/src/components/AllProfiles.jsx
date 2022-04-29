@@ -7,17 +7,17 @@ const AllProfiles = (props) => {
     const [profileList, setProfileList] = useState([]);
     const { id } = useState();
 
-    // useEffect(() => {
-    //     axios.get("http://localhost:8000/api/datingProfile")
-    //     .then((response) => {
-    //         console.log("~~~~RESPONSE~~~~", response)
-    //         setProfileList(response.data.results)
-    //     })
-    //     .catch((err) => {
-    //         console.error("ERRRRRRRRRRORRRRRRRRRRRRR", err)
-    //     })
-    // }, [])
-    console.log(profileList)
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/datingProfile")
+        .then((response) => {
+            console.log("~~~~RESPONSE~~~~", response)
+            setProfileList(response.data.results)
+        })
+        .catch((err) => {
+            console.error("ERRRRRRRRRRORRRRRRRRRRRRR", err)
+        })
+    }, [])
+    // console.log(profileList)
 
     return(
         <>
