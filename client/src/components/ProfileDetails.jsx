@@ -12,7 +12,9 @@ const ProfileDetails = () => {
     useEffect(() => {
         axios.get(`http://localhost8000/profile/details/${id}`)
             .then((response) => {
+                console.log("~~RESPONE/ID~~", response.data.results, id)
                 setProfileDetails(response.data.results)
+                
             })
             .catch((err) => {
                 console.error(err)
@@ -24,7 +26,7 @@ const ProfileDetails = () => {
             <div className="profile-container">
                 <div className="navbar-profile bg-dark text-light">
                     <div>
-                        <h1>ProfileDetails</h1>
+                        <h1>Image Upload / Image Carousel</h1>
                         <i className="fa-solid fa-chevron-right"></i>
                         {/* {
                             profileDetails.map((profileImage, _id) => {

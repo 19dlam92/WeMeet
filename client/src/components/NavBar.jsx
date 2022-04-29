@@ -1,9 +1,11 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 const NavBar = (props) => {
 
     const { id } = useParams();
+
 
 
 
@@ -14,19 +16,20 @@ const NavBar = (props) => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         
-                            <Link to = "/discover" className="nav-link"><li className="nav-item">Discover</li></Link>
+                            <li className="nav-item"><Link to = "/discover" className="nav-link">Discover</Link></li>
                         
-                            <Link to = "/questions" className="nav-link"><li className="nav-item">Questions</li></Link>
+                            <li className="nav-item"><Link to = "/questions" className="nav-link">Questions</Link></li>
                         
-                            <Link to = "/likes" className="nav-link"><li className="nav-item">Likes</li></Link>
+                            <li className="nav-item"><Link to = "/likes" className="nav-link">Likes</Link></li>
                         
-                            <Link to = "/messages" className="nav-link"><li className="nav-item">Messages</li></Link>
+                            <li className="nav-item"><Link to = "/messages" className="nav-link">Messages</Link></li>
                         
-                            <Link to = {`/profile/details/${id}`} className="nav-link" ><li className="nav-item">Profile</li></Link>
+                            <li className="nav-item"><Link to = {`/profile/details/${id}`} className="nav-link" >Profile</Link></li>
                         
-                            <Link to = "/login" className="nav-link"><li className="nav-item">Login</li></Link>
+                            <li className="nav-item"><Link to = "/login" className="nav-link">Login</Link></li>
                         
-                            <Link to = "/create" className="nav-link"><li className="nav-item">Sign Up</li></Link>
+                            <li className="nav-item"><Link to = "/create" className="nav-link">Sign Up</Link></li>
+
                     </ul>
                 </div>
             </div>
