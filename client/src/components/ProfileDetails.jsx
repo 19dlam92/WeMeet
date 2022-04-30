@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 
 const ProfileDetails = () => {
@@ -27,7 +28,7 @@ const ProfileDetails = () => {
                 <div className="navbar-profile bg-dark text-light">
                     <div>
                         <h1>Image Upload / Image Carousel</h1>
-                        <i className="fa-solid fa-chevron-right"></i>
+                        <FontAwesomeIcon icon="fa-solid fa-chevron-right"></FontAwesomeIcon>
                         {/* {
                             profileDetails.map((profileImage, _id) => {
                                 return(
@@ -42,12 +43,12 @@ const ProfileDetails = () => {
                                 )
                             })
                         } */}
-                        
+                        <FontAwesomeIcon icon="fa-solid fa-chevron-left"></FontAwesomeIcon>
                     </div>
                     <div className="navbar-settings d-flex">
-                        <i className=""></i>
+                        <FontAwesomeIcon icon="fa-solid fa-sliders"></FontAwesomeIcon>
                         <button className="btn btn-info w-100"><h3>Preferences</h3></button>
-                        <i className=""></i>
+                        <FontAwesomeIcon icon="fa-solid fa-gear"></FontAwesomeIcon>
                         <button className="btn btn-info w-100"><h3>Settings</h3></button>
                     </div>
                 </div>
