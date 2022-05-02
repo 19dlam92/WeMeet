@@ -47,7 +47,7 @@ const CreateAccount = (props) => {
 
     return(
         <>
-            <form className="" onSubmit = { formHandler }>
+            <form className="create-form" onSubmit = { formHandler }>
                 <div className="form-group">
                     <label>First Name</label>
                     <input className="form-control" type="text" onChange = { (e) => setFirstName(e.target.value) } value = { firstName }/>

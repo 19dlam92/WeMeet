@@ -25,7 +25,7 @@ const AllProfiles = (props) => {
                 profileList.map((profileItem) => {
                     return(
                         <div key = { profileItem._id }>
-                            <Link to href = { `/profile/details/${ profileItem._id }` }>Psuedo Data: { profileItem.firstName }</Link>
+                            <Link to = { `/profile/details/${ profileItem._id }` }>Psuedo Data: { profileItem.firstName }</Link>
                             <Link><img src="" alt="" height="" width=""/></Link>
                         </div>
                     )

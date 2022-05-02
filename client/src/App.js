@@ -6,6 +6,7 @@ import {
   Route
 } from 'react-router-dom'
 import { useState } from 'react';
+import OpeningPage from './components/OpeningPage';
 import NavBar from './components/NavBar';
 import AllProfiles from './components/AllProfiles';
 import CreateAccount from './components/CreateAccount';
@@ -19,11 +20,11 @@ function App() {
   return (
       <div className="App container">
         <BrowserRouter>
-          <NavBar/>
-          <AllProfiles/>
           <Switch>
-            <Route exact path = "/">
-
+            <OpeningPage/>
+            <Route exact path = "/dashboard">
+              <NavBar/>
+              <AllProfiles/>
             </Route>
             <Route exact path = "/discover">
 
@@ -52,7 +53,6 @@ function App() {
             </Route>
           </Switch>
         </BrowserRouter>
-
       </div>
   );
 }
