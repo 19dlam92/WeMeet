@@ -31,7 +31,8 @@ const LoginForm = () => {
                 </div>
                 <input className="btn btn-info" type="submit" value="Login" />
             </form>
-            {/* goes to the dashboard */}
         </>
     )
 }
+
+export default LoginForm;

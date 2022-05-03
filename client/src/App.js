@@ -7,9 +7,10 @@ import {
 } from 'react-router-dom'
 import { useState } from 'react';
 import OpeningPage from './components/OpeningPage';
+import LoginForm from './components/LoginForm';
+import CreateAccount from './components/CreateAccount';
 import NavBar from './components/NavBar';
 import AllProfiles from './components/AllProfiles';
-import CreateAccount from './components/CreateAccount';
 import ProfileDetails from './components/ProfileDetails';
 import ProfileSettings from './components/ProfileSettings';
 
@@ -21,7 +22,15 @@ function App() {
       <div className="App container">
         <BrowserRouter>
           <Switch>
-            <OpeningPage/>
+            <Route exact path = "/">
+              <OpeningPage/>
+            </Route>
+            <Route exact path = "/login">
+              <LoginForm/>
+            </Route>
+            <Route exact path = "/create">
+              <CreateAccount/>
+            </Route>
             <Route exact path = "/dashboard">
               <NavBar/>
               <AllProfiles/>
@@ -40,13 +49,6 @@ function App() {
             </Route>
             <Route exact path = "/profile/details/:id">
               <ProfileDetails/>
-
-            </Route>
-            <Route exact path = "/login">
-
-            </Route>
-            <Route exact path = "/create">
-              <CreateAccount />
             </Route>
             <Route exact path = "/profile/settings">
               <ProfileSettings/>
