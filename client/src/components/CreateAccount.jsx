@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 const CreateAccount = (props) => {
 
@@ -136,6 +136,7 @@ const CreateAccount = (props) => {
                 </div>
                 <input className="btn btn-info mt-3" type="submit" value="Create Account"/>
             </form>
+            <button className="btn btn-info"><Link to = "/">Home</Link></button>
         </>
     )
 }

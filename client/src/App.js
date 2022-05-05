@@ -17,6 +17,7 @@ import ProfileSettings from './components/ProfileSettings';
 function App() {
 
   // const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
       <div className="App container">
