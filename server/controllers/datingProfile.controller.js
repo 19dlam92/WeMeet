@@ -11,7 +11,14 @@ class DatingProfileController {
     register = ( request, response ) => {
         DatingProfile.create(request.body)
         .then((newUser) => {
-            response.json({ message: "SUCCESS!!", newUser: newUser })
+            const userToken = jwt.sign({
+                id: user._id
+            }, process.env.SECRET_KEY);
+            response
+                .cookie('usertoken', userToken, process.env.SECRET_KEY, {
+                    httpOnly: true
+                })
+                .json({ message: "SUCCESS!!", newUser: newUser });
         })
         .catch((err) => {
             response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
