@@ -1,79 +1,118 @@
+const { response } = require('express');
 const DatingProfile = require('../models/datingProfile.model');
 
-// =============================================================
-// CREATE ONE
-// =============================================================
 
-module.exports.createNewDatingProfile = ( request, response) => {
-    DatingProfile.create(request.body)
-    .then((newDatingProfile) => {
-        response.json({ results: newDatingProfile })
-    })
-    .catch((err) => {
-        response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
-    })
-}
+class DatingProfileController {
 
+    // =============================================================
+    // REGISTER
+    // =============================================================
 
-// =============================================================
-// GET ALL
-// =============================================================
-
-module.exports.findAllDatingProfiles = ( request, response ) => {
-    DatingProfile.find()
-    .then((allDatingProfiles) => {
-        response.json({ results: allDatingProfiles })
-    })
-    .catch((err) => {
-        response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
-    })
-}
+    register = ( request, response ) => {
+        DatingProfile.create(request.body)
+        .then((newUser) => {
+            response.json({ message: "SUCCESS!!", newUser: newUser })
+        })
+        .catch((err) => {
+            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+        })
+    }
 
 
-// =============================================================
-// GET ONE BY ID
-// =============================================================
-
-module.exports.findOneDatingProfile = ( request, response ) => {
-    DatingProfile.findOne({ _id: request.params.id })
-    .then((oneDatingProfile) => {
-        response.json({ results: oneDatingProfile })
-    })
-    .catch((err) => {
-        response.json({ message: 'ERRRRRRORRRRRRRRR', error: err })
-    })
-}
+    // =============================================================
+    // LOGIN
+    // =============================================================
 
 
-// =============================================================
-// UPDATE ONE BY ID
-// =============================================================
-
-module.exports.updateOneDatingProfile = ( request, response ) => {
-    DatingProfile.findOneAndUpdate(
-        { _id: request.params.id },
-        request.body,
-        { new: true, runValidators: true }
-    )
-    .then((updateDatingProfile) => {
-        response.json({ results: updateDatingProfile })
-    })
-    .catch((err) => {
-        response.json({ message: 'ERRRRRRORRRRRRRRR', error: err })
-    })
-}
 
 
-// =============================================================
-// DELETE ONE BY ID
-// =============================================================
+    // =============================================================
+    // LOGOUT
+    // =============================================================
 
-module.exports.deleteOneDatingProfile = ( request, response ) => {
-    DatingProfile.deleteOne({ _id: request.params.id })
-    .then((deleteDatingProfile) => {
-        response.json({ results: deleteDatingProfile })
-    })
-    .catch((err) => {
-        response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
-    })
-}
+
+
+
+
+    // =============================================================
+    // CREATE ONE
+    // =============================================================
+    
+    createNewDatingProfile = ( request, response ) => {
+        DatingProfile.create(request.body)
+        .then((newDatingProfile) => {
+            response.json({ results: newDatingProfile })
+        })
+        .catch((err) => {
+            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+        })
+    }
+    
+    
+    // =============================================================
+    // GET ALL
+    // =============================================================
+    
+    findAllDatingProfiles = ( request, response ) => {
+        DatingProfile.find()
+        .then((allDatingProfiles) => {
+            response.json({ results: allDatingProfiles })
+        })
+        .catch((err) => {
+            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+        })
+    }
+    
+    
+    // =============================================================
+    // GET ONE BY ID
+    // =============================================================
+    
+    findOneDatingProfile = ( request, response ) => {
+        DatingProfile.findOne({ _id: request.params.id })
+        .then((oneDatingProfile) => {
+            response.json({ results: oneDatingProfile })
+        })
+        .catch((err) => {
+            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err })
+        })
+    }
+    
+    
+    // =============================================================
+    // UPDATE ONE BY ID
+    // =============================================================
+    
+    updateOneDatingProfile = ( request, response ) => {
+        DatingProfile.findOneAndUpdate(
+            { _id: request.params.id },
+            request.body,
+            { new: true, runValidators: true }
+        )
+        .then((updateDatingProfile) => {
+            response.json({ results: updateDatingProfile })
+        })
+        .catch((err) => {
+            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err })
+        })
+    }
+    
+    
+    // =============================================================
+    // DELETE ONE BY ID
+    // =============================================================
+    
+    deleteOneDatingProfile = ( request, response ) => {
+        DatingProfile.deleteOne({ _id: request.params.id })
+        .then((deleteDatingProfile) => {
+            response.json({ results: deleteDatingProfile })
+        })
+        .catch((err) => {
+            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+        })
+    }
+
+
+} 
+
+module.exports = new DatingProfileController();
