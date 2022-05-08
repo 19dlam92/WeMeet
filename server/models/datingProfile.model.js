@@ -14,27 +14,45 @@ const DatingProfileSchema = new mongoose.Schema({
     age: {
         type: Number,
         required: [true, "Please enter your age"],
-        min: [0.01, "This section MUST be greater than 0"]
+        min: [1, "This section MUST be greater than 0"]
     },
-    gender: {
-        type: String
+    email: {
+        type: String,
+        required: [true, "Please enter a valid email"],
+        validate: {
+            validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
+            message: "Please enter a valid email"
+        }
     },
-    language: {
-        type: String
-    },
-    orientation: {
-        type: String
-    },
-    ethnicity: {
-        type: String
-    },
-    employment: {
-        type: String
-    },
-    astrologicalSign: {
-        type: String
+    password: {
+        type: String,
+        required: [true, "Password is required"],
+        minlength: [8, "Password MUST be at least 8 characters"]
     }
+    // gender: {
+    //     type: String
+    // },
+    // language: {
+    //     type: String
+    // },
+    // orientation: {
+    //     type: String
+    // },
+    // ethnicity: {
+    //     type: String
+    // },
+    // employment: {
+    //     type: String
+    // },
+    // astrologicalSign: {
+    //     type: String
+    // }
 }, { timestamps: true })
+
+DatingProfileSchema.virtual('confirmPassword')
+    // virtual create a "temporary field"
+    .get( () => this.confirmPassword )
+    .set( () => this.confirmPassword = value );
 
 const DatingProfile = mongoose.model('DatingProfile', DatingProfileSchema);
 module.exports = DatingProfile;
