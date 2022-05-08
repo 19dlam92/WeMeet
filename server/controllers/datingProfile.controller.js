@@ -8,23 +8,33 @@ class DatingProfileController {
     // REGISTER
     // =============================================================
 
-    register = ( request, response ) => {
+    // register = ( request, response ) => {
+    //     DatingProfile.create(request.body)
+    //     .then((newUser) => {
+    //         const userToken = jwt.sign({
+    //             id: user._id
+    //         }, process.env.SECRET_KEY);
+    //         response
+    //             .cookie('usertoken', userToken, process.env.SECRET_KEY, {
+    //                 httpOnly: true
+    //             })
+    //             .json({ message: "SUCCESS!!", newUser: newUser });
+    //     })
+    //     .catch((err) => {
+    //         response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+    //     })
+    // }
+
+
+    regist = ( request, response ) => {
         DatingProfile.create(request.body)
         .then((newUser) => {
-            const userToken = jwt.sign({
-                id: user._id
-            }, process.env.SECRET_KEY);
-            response
-                .cookie('usertoken', userToken, process.env.SECRET_KEY, {
-                    httpOnly: true
-                })
-                .json({ message: "SUCCESS!!", newUser: newUser });
+            response.json({ results: newUser})
         })
         .catch((err) => {
             response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
         })
     }
-
 
     // =============================================================
     // LOGIN
