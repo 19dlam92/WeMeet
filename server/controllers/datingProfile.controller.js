@@ -1,4 +1,3 @@
-const { response } = require('express');
 const DatingProfile = require('../models/datingProfile.model');
 
 
@@ -26,10 +25,10 @@ class DatingProfileController {
     // }
 
 
-    regist = ( request, response ) => {
+    register = ( request, response ) => {
         DatingProfile.create(request.body)
         .then((newUser) => {
-            response.json({ results: newUser})
+            response.json({ message: "SUCCESS!!", newUser: newUser })
         })
         .catch((err) => {
             response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
