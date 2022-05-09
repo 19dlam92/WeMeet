@@ -1,5 +1,6 @@
 const DatingProfile = require('../models/datingProfile.model');
-const datingProfileRoute = require('../routes/datingProfile.route');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
 class DatingProfileController {
