@@ -10,7 +10,7 @@ const ProfilePremium = () => {
 
     return(
         <>
-        
+            <h1>Add paymeny api</h1>
         </>
     )
 }

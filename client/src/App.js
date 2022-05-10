@@ -13,6 +13,8 @@ import NavBar from './components/NavBar';
 import AllProfiles from './components/AllProfiles';
 import ProfileDetails from './components/ProfileDetails';
 import ProfileSettings from './components/ProfileSettings';
+import ProfilePreferences from './components/ProfilePreferences';
+import ProfilePremium from './components/ProfilePremium';
 
 function App() {
 
@@ -26,7 +28,7 @@ function App() {
           <OpeningPage/>
           <Switch>
             <Route exact path = "/">
-              
+
             </Route>
             <Route exact path = "/login">
               <LoginForm/>
@@ -52,8 +54,14 @@ function App() {
             <Route exact path = "/profile/details/:id">
               <ProfileDetails/>
             </Route>
+            <Route exact path = "/profile/preferences">
+              <ProfilePreferences/>
+            </Route>
             <Route exact path = "/profile/settings">
               <ProfileSettings/>
+            </Route>
+            <Route exact path = "/profile/premium">
+              <ProfilePremium/>
             </Route>
           </Switch>
         </BrowserRouter>

@@ -31,7 +31,7 @@ const LoginForm = () => {
                 </div>
                 <input className="btn btn-info" type="submit" value="Login" />
             </form>
-            <button className="btn btn-info"><Link to = "/">Home</Link></button>
+            <button className="btn btn-info"><Link to = "/dashboard">Home</Link></button>
         </>
     )
 }

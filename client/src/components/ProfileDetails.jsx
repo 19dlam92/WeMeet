@@ -48,27 +48,33 @@ const ProfileDetails = () => {
                     </div>
                     <div className="navbar-settings d-flex">
                         <FontAwesomeIcon icon="fa-solid fa-sliders"/>
-                        <button className="btn btn-info w-100"><h3>Preferences</h3></button>
+                        <button className="btn btn-info w-100">
+                            <Link to = "/profile/preferences" className=""><h3>Preferences</h3></Link>
+                        </button>
                         <FontAwesomeIcon icon="fa-solid fa-gear"/>
-                        <button className="btn btn-info w-100"><h3>Settings</h3></button>
+                        <button className="btn btn-info w-100">
+                            <Link to = "/profile/settings" className=""><h3>Settings</h3></Link>
+                        </button>
                     </div>
                 </div>
 
                 <div className="premium bg-dark mt-3 h-50">
-                    <button className="btn btn-info w-100"><h3>WeMeet Premium</h3></button>
+                    <button className="btn btn-info w-100">
+                        <Link to = "/profile/premium" className=""><h3>WeMeet Premium</h3></Link>
+                    </button>
                 </div>
                 <div className="profile-descriptionsjustify-content-center mt-3">
                     <div className="description-1">
-                        <textarea cols="70" rows="5" placeholder="About me . . . . "></textarea><hr/>
+                        <textarea cols="70" rows="5" placeholder="About me . . . . "/><hr/>
                     </div>
                     <div className="description-2">
-                        <textarea cols="70" rows="5" placeholder="Aspirations . . . . "></textarea><hr/>
+                        <textarea cols="70" rows="5" placeholder="Aspirations . . . . "/><hr/>
                     </div>
                     <div className="description-3">
-                        <textarea cols="70" rows="5" placeholder="Hobbies . . . . "></textarea><hr/>
+                        <textarea cols="70" rows="5" placeholder="Hobbies . . . . "/><hr/>
                     </div>
                     <div className="description-4">
-                        <textarea cols="70" rows="5" placeholder="Secrets . . . . "></textarea><hr/>
+                        <textarea cols="70" rows="5" placeholder="Secrets . . . . "/><hr/>
                     </div>
                 </div>
             </div>
