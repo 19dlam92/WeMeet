@@ -20,13 +20,13 @@ const LoginForm = () => {
         <>
             <form className="login-form" onSubmit = { loginHandler } >
                 <div className="form-group">
-                    <label>Email</label>
-                    <input className="form-control" type="text" />
+                    <label></label>
+                    <input className="form-control" type="text" placeholder="Email"/>
                     <p className="text-danger">{ formErrors.email?.message }</p>
                 </div>
                 <div className="form-group">
-                    <label>Password</label>
-                    <input className="form-control" type="text" />
+                    <label></label>
+                    <input className="form-control" type="text" placeholder="Password"/>
                     <p className="text-danger">{ formErrors.password?.message }</p>
                 </div>
                 <input className="btn btn-info" type="submit" value="Login" />

@@ -22,9 +22,11 @@ function App() {
   return (
       <div className="App container">
         <BrowserRouter>
+          <NavBar/>
+          <OpeningPage/>
           <Switch>
             <Route exact path = "/">
-              <OpeningPage/>
+              
             </Route>
             <Route exact path = "/login">
               <LoginForm/>
@@ -33,7 +35,6 @@ function App() {
               <CreateAccount/>
             </Route>
             <Route exact path = "/dashboard">
-              <NavBar/>
               <AllProfiles/>
             </Route>
             <Route exact path = "/discover">

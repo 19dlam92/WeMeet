@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faChevronLeft, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 
 const ProfileDetails = () => {
@@ -28,7 +28,8 @@ const ProfileDetails = () => {
                 <div className="navbar-profile bg-dark text-light">
                     <div>
                         <h1>Image Upload / Image Carousel</h1>
-                        <FontAwesomeIcon icon="fa-solid fa-chevron-right"></FontAwesomeIcon>
+                        <FontAwesomeIcon className="fa-solid fas fa-edit"/>
+                        <FontAwesomeIcon className="fa-solid fa-chevron-right"/>
                         {/* {
                             profileDetails.map((profileImage, _id) => {
                                 return(
@@ -43,12 +44,12 @@ const ProfileDetails = () => {
                                 )
                             })
                         } */}
-                        <FontAwesomeIcon icon="fa-solid fa-chevron-left"></FontAwesomeIcon>
+                        <FontAwesomeIcon icon="fa-solid fa-chevron-left"/>
                     </div>
                     <div className="navbar-settings d-flex">
-                        <FontAwesomeIcon icon="fa-solid fa-sliders"></FontAwesomeIcon>
+                        <FontAwesomeIcon icon="fa-solid fa-sliders"/>
                         <button className="btn btn-info w-100"><h3>Preferences</h3></button>
-                        <FontAwesomeIcon icon="fa-solid fa-gear"></FontAwesomeIcon>
+                        <FontAwesomeIcon icon="fa-solid fa-gear"/>
                         <button className="btn btn-info w-100"><h3>Settings</h3></button>
                     </div>
                 </div>
@@ -58,16 +59,16 @@ const ProfileDetails = () => {
                 </div>
                 <div className="profile-descriptionsjustify-content-center mt-3">
                     <div className="description-1">
-                        <textarea cols="70" rows="5" placeholder="About me . . . . "></textarea><hr />
+                        <textarea cols="70" rows="5" placeholder="About me . . . . "></textarea><hr/>
                     </div>
                     <div className="description-2">
-                        <textarea cols="70" rows="5" placeholder="Aspirations . . . . "></textarea><hr />
+                        <textarea cols="70" rows="5" placeholder="Aspirations . . . . "></textarea><hr/>
                     </div>
                     <div className="description-3">
-                        <textarea cols="70" rows="5" placeholder="Hobbies . . . . "></textarea><hr />
+                        <textarea cols="70" rows="5" placeholder="Hobbies . . . . "></textarea><hr/>
                     </div>
                     <div className="description-4">
-                        <textarea cols="70" rows="5" placeholder="Secrets . . . . "></textarea><hr />
+                        <textarea cols="70" rows="5" placeholder="Secrets . . . . "></textarea><hr/>
                     </div>
                 </div>
             </div>

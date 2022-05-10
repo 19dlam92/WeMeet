@@ -49,18 +49,18 @@ const CreateAccount = (props) => {
         <>
             <form className="create-form" onSubmit = { formHandler }>
                 <div className="form-group">
-                    <label>First Name</label>
-                    <input className="form-control" type="text" onChange = { (e) => setFirstName(e.target.value) } value = { firstName }/>
+                    <label></label>
+                    <input className="form-control" type="text" placeholder="First Name" onChange = { (e) => setFirstName(e.target.value) } value = { firstName }/>
                     <p className="text-danger">{ formErrors.firstName?.message }</p>
                 </div>
                 <div className="form-group">
-                    <label>Last Name</label>
-                    <input className="form-control" type="text" onChange = { (e) => setLastName(e.target.value) } value = { lastName }/>
+                    <label></label>
+                    <input className="form-control" type="text" placeholder="Lasst Name" onChange = { (e) => setLastName(e.target.value) } value = { lastName }/>
                     <p className="text-danger">{ formErrors.lastName?.message }</p>
                 </div>
                 <div className="form-group">
-                    <label>Age</label>
-                    <input className="form-control" type="text" onChange = { (e) => setAge(e.target.value) } value = { age }/>
+                    <label></label>
+                    <input className="form-control" type="text" placeholder="Age" onChange = { (e) => setAge(e.target.value) } value = { age }/>
                     <p className="text-danger">{ formErrors.age?.message }</p>
                 </div>
                 <div className="form-group mt-3">
