@@ -36,3 +36,8 @@ filter button
 
 
 formSubmitted = { formSubmitted } setFormSubmitted = { setFormSubmitted }
+
+// uuid = generates random ID per upload
+// '-' = literal hyphen
+// Date.now = timestamp
+// path.extname = where file was uploaded

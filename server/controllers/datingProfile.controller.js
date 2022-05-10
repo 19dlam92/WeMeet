@@ -78,15 +78,15 @@ class DatingProfileController {
     // CREATE ONE
     // =============================================================
     
-    // createNewDatingProfile = ( request, response ) => {
-    //     DatingProfile.create(request.body)
-    //     .then((newDatingProfile) => {
-    //         response.json({ results: newDatingProfile })
-    //     })
-    //     .catch((err) => {
-    //         response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
-    //     })
-    // }
+    createNewDatingProfile = ( request, response ) => {
+        DatingProfile.create(request.body)
+        .then((newDatingProfile) => {
+            response.json({ results: newDatingProfile })
+        })
+        .catch((err) => {
+            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+        })
+    }
     
     
     // =============================================================

@@ -24,6 +24,9 @@ const DatingProfileSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
         minlength: [8, "Password MUST be at least 8 characters"]
+    },
+    imageUpload: {
+        type: String
     }
 }, { timestamps: true })
 

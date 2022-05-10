@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const port = 8000;
-const cors = require('cors')
+const cors = require('cors');
+const multer = require('multer');
 const cookieParser = require('cookie-parser');
 app.use( cors({ credentials: true, origin: 'http://localhost3000/' }) )
 app.use( express.json() );

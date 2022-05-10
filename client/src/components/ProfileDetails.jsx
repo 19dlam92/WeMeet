@@ -27,7 +27,10 @@ const ProfileDetails = () => {
             <div className="profile-container">
                 <div className="navbar-profile bg-dark text-light">
                     <div>
-                        <h1>Image Upload / Image Carousel</h1>
+                        <form encType='multipart/form-data'>
+                            <h1>Image Upload / Image Carousel</h1>
+
+                        </form>
                         <FontAwesomeIcon className="fa-solid fas fa-edit"/>
                         <FontAwesomeIcon className="fa-solid fa-chevron-right"/>
                         {/* {
@@ -57,7 +60,6 @@ const ProfileDetails = () => {
                         </button>
                     </div>
                 </div>
-
                 <div className="premium bg-dark mt-3 h-50">
                     <button className="btn btn-info w-100">
                         <Link to = "/profile/premium" className=""><h3>WeMeet Premium</h3></Link>
