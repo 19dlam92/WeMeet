@@ -3,14 +3,14 @@ import React from "react";
 const ProfilePremium = () => {
 
 
-    // incorporate payment
+
 
 
 
 
     return(
         <>
-            <h1>Add paymeny api</h1>
+            <h1>Add payment api(?)</h1>
         </>
     )
 }

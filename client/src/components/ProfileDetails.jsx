@@ -27,10 +27,15 @@ const ProfileDetails = () => {
             <div className="profile-container">
                 <div className="navbar-profile bg-dark text-light">
                     <div>
-                        <form encType='multipart/form-data'>
-                            <h1>Image Upload / Image Carousel</h1>
-
-                        </form>
+                    <form enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h1>Image Upload</h1>
+                            <h1>and</h1>
+                            <h1>Image Carousel</h1>
+                            <input type="file" class="form-control-file" name="imageUpload"/>
+                            {/* <input type="submit" value="Get me the stats!" class="btn btn-default"/>*/}
+                        </div>
+                    </form>
                         <FontAwesomeIcon className="fa-solid fas fa-edit"/>
                         <FontAwesomeIcon className="fa-solid fa-chevron-right"/>
                         {/* {
@@ -51,7 +56,7 @@ const ProfileDetails = () => {
                     </div>
                     <div className="navbar-settings d-flex">
                         <FontAwesomeIcon icon="fa-solid fa-sliders"/>
-                        <button className="btn btn-info w-100">
+                        <button className="btn btn-info btn-hover w-100">
                             <Link to = "/profile/preferences" className=""><h3>Preferences</h3></Link>
                         </button>
                         <FontAwesomeIcon icon="fa-solid fa-gear"/>

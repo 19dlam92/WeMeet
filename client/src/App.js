@@ -12,8 +12,9 @@ import CreateAccount from './components/CreateAccount';
 import NavBar from './components/NavBar';
 import AllProfiles from './components/AllProfiles';
 import ProfileDetails from './components/ProfileDetails';
-import ProfileSettings from './components/ProfileSettings';
+import ProfileUpdate from './components/ProfileUpdate';
 import ProfilePreferences from './components/ProfilePreferences';
+import ProfileSettings from './components/ProfileSettings';
 import ProfilePremium from './components/ProfilePremium';
 
 function App() {
@@ -53,6 +54,9 @@ function App() {
             </Route>
             <Route exact path = "/profile/details/:id">
               <ProfileDetails/>
+            </Route>
+            <Route exact path = "/profile/update">
+              <ProfileUpdate/>
             </Route>
             <Route exact path = "/profile/preferences">
               <ProfilePreferences/>
