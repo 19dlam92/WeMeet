@@ -14,7 +14,7 @@ const ProfileSettings = () => {
                 history.push("/")
             })
             .catch((err) => {
-                console.error(err)
+                console.error("ERRRRRRRRRRORRRRRRRRRRRRR", err)
             })
     }
 

@@ -18,7 +18,7 @@ const ProfileDetails = () => {
                 
             })
             .catch((err) => {
-                console.error(err)
+                console.error("ERRRRRRRRRRORRRRRRRRRRRRR", err)
             })
     }, [])
 
@@ -29,30 +29,32 @@ const ProfileDetails = () => {
                     <div>
                     <form enctype="multipart/form-data">
                         <div class="form-group">
-                            <h1>Image Upload</h1>
-                            <h1>and</h1>
+                            <h4>Create an edit button/icon</h4>
+                            <h4>for ProfileUpdate component</h4>
+                            <h4>This holds the Image Upload</h4>
                             <h1>Image Carousel</h1>
+                            <h4>This will dynamically render uploads</h4>
                             <input type="file" class="form-control-file" name="imageUpload"/>
                             {/* <input type="submit" value="Get me the stats!" class="btn btn-default"/>*/}
                         </div>
                     </form>
-                        <FontAwesomeIcon className="fa-solid fas fa-edit"/>
-                        <FontAwesomeIcon className="fa-solid fa-chevron-right"/>
-                        {/* {
-                            profileDetails.map((profileImage, _id) => {
-                                return(
-                                    <div className="wrapper">
-                                        <section id="section1">
-                                            <div key = { _id }>
-                                                <h3>Image Carousel</h3>
-                                                <img src = { profileImage.upload } alt="Describe Image" height="" width=""/>
-                                            </div>
-                                        </section>
-                                    </div>
-                                )
-                            })
-                        } */}
-                        <FontAwesomeIcon icon="fa-solid fa-chevron-left"/>
+                    <FontAwesomeIcon className="fa-solid fas fa-edit"/>
+                    <FontAwesomeIcon className="fa-solid fa-chevron-right"/>
+                    {/* {
+                        profileDetails.map((profileImage, _id) => {
+                            return(
+                                <div className="wrapper">
+                                    <section id="section1">
+                                        <div key = { _id }>
+                                            <h3>Image Carousel</h3>
+                                            <img src = { profileImage.upload } alt="Describe Image" height="" width=""/>
+                                        </div>
+                                    </section>
+                                </div>
+                            )
+                        })
+                    } */}
+                    <FontAwesomeIcon icon="fa-solid fa-chevron-left"/>
                     </div>
                     <div className="navbar-settings d-flex">
                         <FontAwesomeIcon icon="fa-solid fa-sliders"/>
