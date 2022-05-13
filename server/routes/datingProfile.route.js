@@ -25,6 +25,8 @@ const fileFilter = ( request, file, cb ) => {
     }
 }
 
+const imageUpload = multer({ storage, fileFilter })
+
 module.exports = (app) => {
     
     app.get("/api/datingProfile", DatingProfileController.findAllDatingProfiles);

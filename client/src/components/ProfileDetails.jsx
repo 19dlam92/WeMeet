@@ -34,12 +34,12 @@ const ProfileDetails = () => {
                             <h4>This holds the Image Upload</h4>
                             <h1>Image Carousel</h1>
                             <h4>This will dynamically render uploads</h4>
-                            <input type="file" class="form-control-file" name="imageUpload"/>
-                            {/* <input type="submit" value="Get me the stats!" class="btn btn-default"/>*/}
+                            <input type="file" className="form-control-file" accept=".png, .jpg, .jpeg" name="imageUpload"/>
+                            <input type="submit" className="btn btn-default"/>
                         </div>
                     </form>
-                    <FontAwesomeIcon className="fa-solid fas fa-edit"/>
-                    <FontAwesomeIcon className="fa-solid fa-chevron-right"/>
+                    <i className="fa-solid fas fa-edit"/>
+                    <i className="fa-solid fa-chevron-right"/>
                     {/* {
                         profileDetails.map((profileImage, _id) => {
                             return(
