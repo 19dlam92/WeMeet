@@ -9,69 +9,21 @@ class DatingProfileController {
     // REGISTER
     // =============================================================
 
-    register = ( request, response ) => {
-        DatingProfile.create(request.body)
-        .then((newUser) => {
-            const userToken = jwt.sign({
-                id: user._id
-            }, process.env.SECRET_KEY);
-            response
-                .cookie('usertoken', userToken, process.env.SECRET_KEY, {
-                    httpOnly: true
-                })
-                .json({ message: 'SUCCESS!!', newUser: newUser });
-        })
-        .catch((err) => {
-            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
-        })
-    }
 
-
-    // register = ( request, response ) => {
-    //     DatingProfile.create(request.body)
-    //     .then((newUser) => {
-    //         response.json({ message: "SUCCESS!!", newUser: newUser })
-    //     })
-    //     .catch((err) => {
-    //         response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
-    //     })
-    // }
 
 
     // =============================================================
     // LOGIN
     // =============================================================
 
-    login = async( request, response ) => {
-        const user = await DatingProfile.findOne({ email: request.body.email });
-        if (user == null) {
-            return response.sendStatus(400);
-        }
 
-        const correctPassword = await bcrypt.compare( request.body.password, user.password );
-        if (!correctPassword) {
-            return response.sendStatus(400)
-        }
-
-        const userToken = jwt.sign({
-            id: user._id
-        }, process.env.SECRET_KEY);
-        response
-            .cookie('usetoken', userToken, process.env.SECRET_KEY, {
-                httpOnly: true
-            })
-            .json({  message: 'SUCCESS!!' })
-    }
 
 
     // =============================================================
     // LOGOUT
     // =============================================================
 
-    logout = ( request, response ) => {
-        response.clearCookie('usertoken');
-        response.sendStatus(200);
-    }
+
 
 
     // =============================================================
