@@ -13,9 +13,8 @@ const ProfileDetails = () => {
     useEffect(() => {
         axios.get(`http://localhost8000/profile/details/${id}`)
             .then((response) => {
-                console.log("~~RESPONE/ID~~", response.data.results, id)
+                console.log("~~RESPONSE--->ID~~", response.data.results, id)
                 setProfileDetails(response.data.results)
-                
             })
             .catch((err) => {
                 console.error("ERRRRRRRRRRORRRRRRRRRRRRR", err)

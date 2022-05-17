@@ -1,6 +1,6 @@
 const DatingProfile = require('../models/datingProfile.model');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+// const bcrypt = require('bcrypt');
+// const jwt = require('jsonwebtoken');
 
 
 class DatingProfileController {

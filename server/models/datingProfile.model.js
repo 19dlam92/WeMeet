@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 const DatingProfileSchema = new mongoose.Schema({
     firstName: {
@@ -30,33 +30,33 @@ const DatingProfileSchema = new mongoose.Schema({
     }
 }, { timestamps: true })
 
-DatingProfileSchema.virtual('confirmPassword')
-    .get( () => this.confirmPassword )
-    .set( () => this.confirmPassword = value );
-    // virtual create a "temporary field"
-    // creates a property called "confirmPassword"
-    // getter and setter creates "temporary fields" for confirmPassword
+// DatingProfileSchema.virtual('confirmPassword')
+//     .get( () => this.confirmPassword )
+//     .set( () => this.confirmPassword = value );
+//     // virtual create a "temporary field"
+//     // creates a property called "confirmPassword"
+//     // getter and setter creates "temporary fields" for confirmPassword
 
-DatingProfileSchema.pre('validate', function(next) {
-    // pre = run the function BEFORE 'validate'
-    if (this.password !== confirmPassword) {
-        this.invalidate('confirmPassword', 'Password confirmation does not match');
-    }
-    next();
-});
+// DatingProfileSchema.pre('validate', function(next) {
+//     // pre = run the function BEFORE 'validate'
+//     if (this.password !== confirmPassword) {
+//         this.invalidate('confirmPassword', 'Password confirmation does not match');
+//     }
+//     next();
+// });
 
-DatingProfileSchema.pre('save', function(next) {
-    // 'validate' & 'save' are key words
-    // before you 'save' run function(next)
-    // 10 = saltRounds
-    // saltRounds = # of times password is scrambled
-    // 10 is usually standard
-    bcrypt.hash(this.password, 10)
-        .then((hash) => {
-            this.password = hash;
-            next();
-        });
-});
+// DatingProfileSchema.pre('save', function(next) {
+//     // 'validate' & 'save' are key words
+//     // before you 'save' run function(next)
+//     // 10 = saltRounds
+//     // saltRounds = # of times password is scrambled
+//     // 10 is usually standard
+//     bcrypt.hash(this.password, 10)
+//         .then((hash) => {
+//             this.password = hash;
+//             next();
+//         });
+// });
 
 const DatingProfile = mongoose.model('DatingProfile', DatingProfileSchema);
 module.exports = DatingProfile;
