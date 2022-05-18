@@ -12,10 +12,11 @@ class DatingProfileController {
     register = ( request, response ) => {
         DatingProfile.find({ email: request.body.email })
         .then((validEmail) => {
-            console.log("NOT A DUPLICATE EMAIL", validEmail)
+            // console.log("NOT A DUPLICATE EMAIL", validEmail)
             if (validEmail.length === 0) {
                 DatingProfile.create(request.body)
                 .then(newUser => {
+                    console.log("THIS IS A NEW USER", newUser)
                     const userToken = jwt.sign({
                         id: user._id,
                         firstName: user.firstName

@@ -9,7 +9,7 @@ const CreateAccount = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [formErrors, setFormErrors] = useState({});
+    const [registerErrors, setRegisterErrors] = useState({});
     const history = useHistory();
 
     const registerHandler = (e) => {
@@ -26,7 +26,7 @@ const CreateAccount = (props) => {
             .then((response) => {
                 console.log("~~~~RESPONSE~~~~", response)
                 if (response.data.errors) {
-                    setFormErrors(response.data.errors);
+                    setRegisterErrors(response.data.errors);
                 } else {
                     // props.setFormSubmitted(!props.formSubmitted);
                     history.push("/")
@@ -44,27 +44,27 @@ const CreateAccount = (props) => {
             <form className="create-form" onSubmit = { registerHandler }>
                 <div className="form-group">
                     <input className="form-control" type="text" name="firstName" placeholder="First Name" onChange = { (e) => setFirstName(e.target.value) } value = { firstName }/>
-                    <p className="text-danger">{ formErrors.firstName?.message }</p>
+                    <p className="text-danger">{ registerErrors.firstName?.message }</p>
                 </div>
                 <div className="form-group">
                     <input className="form-control" type="text" name="lastName" placeholder="Last Name" onChange = { (e) => setLastName(e.target.value) } value = { lastName }/>
-                    <p className="text-danger">{ formErrors.lastName?.message }</p>
+                    <p className="text-danger">{ registerErrors.lastName?.message }</p>
                 </div>
                 <div className="form-group">
                     <input className="form-control" type="text" name="email" placeholder="Email" onChange = { (e) => setEmail(e.target.value) } value = { email }/>
-                    <p className="text-danger">{ formErrors.email?.message }</p>
+                    <p className="text-danger">{ registerErrors.email?.message }</p>
                 </div>
                 <div className="form-group">
                     <input className="form-control" type="password" name="password" placeholder="Password" onChange = { (e) => setPassword(e.target.value) } value = { password }/>
-                    <p className="text-danger">{ formErrors.password?.message }</p>
+                    <p className="text-danger">{ registerErrors.password?.message }</p>
                 </div>
                 <div className="form-group">
                     <input className="form-control" type="password" name="confirmPassword" placeholder="Confirm Password" onChange = { (e) => setConfirmPassword(e.target.value) }/>
-                    <p className="text-danger">{ formErrors.confirmPassword?.message }</p>
+                    <p className="text-danger">{ registerErrors.confirmPassword?.message }</p>
                 </div>
-                <input className="btn btn-info" type="submit" value="Create Account"/>
+                <Link to = "/login"><input className="btn btn-info" type="submit" value="Create Account"/></Link>
             </form>
-            <button className="btn btn-info"><Link to = "/">Home</Link></button>
+            {/* <button className="btn btn-info"><Link to = "/">Home</Link></button> */}
         </>
     )
 }

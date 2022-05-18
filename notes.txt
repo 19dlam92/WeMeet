@@ -1,12 +1,49 @@
 FEATURES / COMMENT OUT WHATS COMPLETED
 
-image upload
-image carousel
-payment
-login registration
-reusing components (?)
+IMAGE UPLOAD
+const multer = require('multer');
+const { v4: uuid4 } = require('uuid');
+const { path } = require('express/lib/application');
+
+const storage = multer.diskStorage({
+    destination: function( request, file, cb ) {
+        cb(null, 'images');
+    },
+    filename: function( request, file, cb ) {
+        cb(null, uuid4() + '-' + Date.now() + path.extname(file.originalname))
+        uuid = generates random ID per upload
+        '-' = literal hyphen
+        Date.now = timestamp
+        path.extname = where file was uploaded
+    }
+})
+
+const fileFilter = ( request, file, cb ) => {
+    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+    if (allowedFileTypes.includes(file.mimetype)) {
+        cb(null, true);
+    } else {
+        cb(null, false)
+    }
+}
+
+const imageUpload = multer({ storage, fileFilter })
+
+
+IMAGE CAROUSEL
+
+
+PAYMENT
+
+
+LOGIN REGISTRATION
+
+
+REUSING COMPONENTS (?)
     are there multiple of the same component?
-main page
+
+
+MAIN PAGE
     display all created profiles
         onScroll = more profiles load
         flex the profiles into boxes with minimal info
@@ -24,15 +61,22 @@ main page
         }
     refer to okc
     https://www.youtube.com/watch?v=gnkrDse9QKc
-textboxes
+
+
+TEXTBOXES
     X characters left in space
 <select></select>
     able to select multiple if applicable
-messaging
+
+
+MESSAGING
     may require socket.io
 swipe left / swipe right function
-filter button
+
+
+FILTER BUTTON
     only displays what you've "filtered"
+
 
 
 formSubmitted = { formSubmitted } setFormSubmitted = { setFormSubmitted }
@@ -41,3 +85,4 @@ formSubmitted = { formSubmitted } setFormSubmitted = { setFormSubmitted }
 // '-' = literal hyphen
 // Date.now = timestamp
 // path.extname = where file was uploaded
+
