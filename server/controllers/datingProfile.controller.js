@@ -1,6 +1,6 @@
 const DatingProfile = require('../models/datingProfile.model');
-// const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
 class DatingProfileController {
@@ -10,9 +10,79 @@ class DatingProfileController {
     // =============================================================
 
     register = ( request, response ) => {
-        DatingProfile.create(request.body)
-        .then((newUser) => {
-            response.json({ message: "SUCCESS!!", newUser: newUser })
+        DatingProfile.find({ email: request.body.email })
+        .then((validEmail) => {
+            console.log("NOT A DUPLICATE EMAIL", validEmail)
+            if (validEmail.length === 0) {
+                DatingProfile.create(request.body)
+                .then(newUser => {
+                    const userToken = jwt.sign({
+                        id: user._id,
+                        firstName: user.firstName
+                        // jwt.io testing / verifying if cookie has been processed
+                    }, process.env.SECRET_KEY);
+        
+                    response
+                        .cookie("userToken", userToken, process.env.SECRET_KEY, {
+                            httpOnly: true
+                        })
+                        .json({ message: "SUCCESS!!", newUser: newUser });
+                })
+                .catch((err) => {
+                    response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+                })
+            } else {
+                response.json({ errors: { email: { message: "This email is already taken" }}})
+            }
+        })
+        .catch((err) => {
+            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+        })
+    }
+
+
+    // =============================================================
+    // LOGIN
+    // =============================================================
+
+    login = async( request, response ) => {
+        const user = await DatingProfile.findOne({ email: request.body.email });
+        if (user === null) {
+            return response.sendStatus(400);
+            // can also return response.json({ message: ". . . ." })
+            // 400 = bad
+            // 200 = good
+        }
+
+        const correctPassword = await bcrypt.compare( request.body.password, user.password );
+        if (!correctPassword) {
+            return response.sendStatus(400);
+        }
+
+        const userToken = jwt.sign({
+            id: user._id,
+            firstName: user.firstName
+        }, process.env.SECRET_KEY);
+        // SECRET_KEY = w/e we named the variable for the SECRET_KEY
+
+        response
+            .cookie("userToken", userToken, process.env.SECRET_KEY, {
+                httpOnly: true
+            })
+            .json({ message: "SUCCESS!!" });
+    }
+
+    // =============================================================
+    // LOGGED IN USER
+    // =============================================================
+
+    loggedInUser = ( request, response ) => {
+        const decodedJWT = jwt.decode(request.cookie.userToken, { complete: true })
+        // decode = gets info from a cookie
+        // decodedJWT = has info about the user in "payload"
+        DatingProfile.findOne({ _id: decodedJWT.payload.id })
+        .then((foundUser) => {
+            response.json({ results: foundUser })
         })
         .catch((err) => {
             response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
@@ -22,17 +92,13 @@ class DatingProfileController {
 
 
     // =============================================================
-    // LOGIN
-    // =============================================================
-
-
-
-
-    // =============================================================
     // LOGOUT
     // =============================================================
 
-
+    logout = ( request, response ) => {
+        response.clearCookie("userToken");
+        response.sendStatus(200);
+    }
 
 
     // =============================================================
@@ -69,15 +135,15 @@ class DatingProfileController {
     // GET ONE BY ID
     // =============================================================
     
-    findOneDatingProfile = ( request, response ) => {
-        DatingProfile.findOne({ _id: request.params.id })
-        .then((oneDatingProfile) => {
-            response.json({ results: oneDatingProfile })
-        })
-        .catch((err) => {
-            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err })
-        })
-    }
+    // findOneDatingProfile = ( request, response ) => {
+    //     DatingProfile.findOne({ _id: request.params.id })
+    //     .then((oneDatingProfile) => {
+    //         response.json({ results: oneDatingProfile })
+    //     })
+    //     .catch((err) => {
+    //         response.json({ message: 'ERRRRRRORRRRRRRRR', error: err })
+    //     })
+    // }
     
     
     // =============================================================

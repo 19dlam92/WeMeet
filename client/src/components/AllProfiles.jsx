@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 const AllProfiles = (props) => {
 
     const [profileList, setProfileList] = useState([]);
-    const { id } = useState();
+    const [loggedInUser, setLoggedInUser] = useState({});
+    const history = useHistory();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/datingProfile")
+        axios.get("http://localhost:8000/api/datingProfile/loggedInUser", { withCredentials: true })
         .then((response) => {
             console.log("~~~~RESPONSE~~~~", response)
-            setProfileList(response.data.results)
+            if (response.data.results) {
+                // setProfileList(response.data.results)
+                setLoggedInUser(response.data.results)
+            }
         })
         .catch((err) => {
             console.error("ERRRRRRRRRRORRRRRRRRRRRRR", err)
+            history.push("/")
         })
     }, [])
     // console.log(profileList)

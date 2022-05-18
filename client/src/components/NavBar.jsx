@@ -1,12 +1,22 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 
 const NavBar = (props) => {
 
     const { id } = useParams();
+    const history = useHistory();
 
 
+    const logoutHandler = () => {
+        axios.get("http://localhost:8000/api/datingProfile/logout", { withCredentials: true })
+            .then((response) => {
+                history.pushState("/")
+            })
+            .catch((err) => {
+                console.error("ERRRRRRRRRRORRRRRRRRRRRRR", err)
+            })
+    }
 
 
     return(
@@ -26,7 +36,7 @@ const NavBar = (props) => {
                         
                         <li className="nav-item"><Link to = {`/profile/details/${id}`} className="nav-link">Profile</Link></li>
                         
-                        <li className="nav-item"><Link to = "/" className="nav-link">Logout</Link></li>
+                        <li className="nav-item"><Link to = "/" onClick = { logoutHandler }className="nav-link">Logout</Link></li>
                         
                     </ul>
                 </div>
