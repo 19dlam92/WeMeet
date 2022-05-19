@@ -14,7 +14,7 @@ module.exports = (app) => {
 
     app.put("/api/datingProfile/:id", DatingProfileController.updateOneDatingProfile);
     
-    app.post("/api/datingProfile", DatingProfileController.createNewDatingProfile);
+    // app.post("/api/datingProfile", DatingProfileController.createNewDatingProfile);
     
     app.post("/api/datingProfile/register", DatingProfileController.register);
 

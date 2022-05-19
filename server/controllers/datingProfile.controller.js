@@ -10,6 +10,7 @@ class DatingProfileController {
     // =============================================================
 
     register = ( request, response ) => {
+        console.log(request.body)
         DatingProfile.find({ email: request.body.email })
         .then((validEmail) => {
             // console.log("NOT A DUPLICATE EMAIL", validEmail)
@@ -30,14 +31,14 @@ class DatingProfileController {
                         .json({ message: "SUCCESS!!", newUser: newUser });
                 })
                 .catch((err) => {
-                    response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+                    response.json({ message: 'ERRRRRRORRRRRRRRR wheres my web token!', error: err})
                 })
             } else {
                 response.json({ errors: { email: { message: "This email is already taken" }}})
             }
         })
         .catch((err) => {
-            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+            response.json({ message: 'ERRRRRRORRRRRRRRR missing the registration?', error: err})
         })
     }
 
@@ -86,7 +87,7 @@ class DatingProfileController {
             response.json({ results: foundUser })
         })
         .catch((err) => {
-            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+            response.json({ message: 'ERRRRRRORRRRRRRRR user not logged in!', error: err})
         })
     }
 
@@ -106,15 +107,15 @@ class DatingProfileController {
     // CREATE ONE
     // =============================================================
     
-    createNewDatingProfile = ( request, response ) => {
-        DatingProfile.create(request.body)
-        .then((newDatingProfile) => {
-            response.json({ results: newDatingProfile })
-        })
-        .catch((err) => {
-            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
-        })
-    }
+    // createNewDatingProfile = ( request, response ) => {
+    //     DatingProfile.create(request.body)
+    //     .then((newDatingProfile) => {
+    //         response.json({ results: newDatingProfile })
+    //     })
+    //     .catch((err) => {
+    //         response.json({ message: 'ERRRRRRORRRRRRRRR cant create a new profile?', error: err})
+    //     })
+    // }
     
     
     // =============================================================
@@ -127,7 +128,7 @@ class DatingProfileController {
             response.json({ results: allDatingProfiles })
         })
         .catch((err) => {
-            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+            response.json({ message: 'ERRRRRRORRRRRRRRR wheres everyones profile?', error: err})
         })
     }
     
@@ -142,7 +143,7 @@ class DatingProfileController {
     //         response.json({ results: oneDatingProfile })
     //     })
     //     .catch((err) => {
-    //         response.json({ message: 'ERRRRRRORRRRRRRRR', error: err })
+    //         response.json({ message: 'ERRRRRRORRRRRRRRR looking for a user!', error: err })
     //     })
     // }
     
@@ -161,7 +162,7 @@ class DatingProfileController {
             response.json({ results: updateDatingProfile })
         })
         .catch((err) => {
-            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err })
+            response.json({ message: 'ERRRRRRORRRRRRRRR trying to update my profile!', error: err })
         })
     }
     
@@ -176,7 +177,7 @@ class DatingProfileController {
             response.json({ results: deleteDatingProfile })
         })
         .catch((err) => {
-            response.json({ message: 'ERRRRRRORRRRRRRRR', error: err})
+            response.json({ message: 'ERRRRRRORRRRRRRRR dont want this account anymore!', error: err})
         })
     }
 
