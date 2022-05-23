@@ -9,38 +9,63 @@ class DatingProfileController {
     // REGISTER
     // =============================================================
 
-    register = ( request, response ) => {
-        console.log(request.body)
-        DatingProfile.find({ email: request.body.email })
-        .then((validEmail) => {
-            // console.log("NOT A DUPLICATE EMAIL", validEmail)
-            if (validEmail.length === 0) {
-                DatingProfile.create(request.body)
-                .then(newUser => {
-                    console.log("THIS IS A NEW USER", newUser)
-                    const userToken = jwt.sign({
-                        id: user._id,
-                        firstName: user.firstName
-                        // jwt.io testing / verifying if cookie has been processed
-                    }, process.env.SECRET_KEY);
+    register = async( request, response ) => {
+        const email = await DatingProfile.find({ email: request.body.email })
+        if ( email === null ) {
+            return response.sendStatus(400);
+        }
+
+        const validEmail = await DatingProfile.create( request.body )
+        if ( validEmail.length === 0 ) {
+            return response.sendStatus(400);
+        }
+
+        const userToken = jwt.sign({
+            id: user._id,
+            firstName: user.firstName
+        }, process.env.SECRET_KEY);
         
-                    response
-                        .cookie("userToken", userToken, process.env.SECRET_KEY, {
-                            httpOnly: true
-                        })
-                        .json({ message: "SUCCESS!!", newUser: newUser });
-                })
-                .catch((err) => {
-                    response.json({ message: 'ERRRRRRORRRRRRRRR wheres my web token!', error: err})
-                })
-            } else {
-                response.json({ errors: { email: { message: "This email is already taken" }}})
-            }
-        })
-        .catch((err) => {
-            response.json({ message: 'ERRRRRRORRRRRRRRR missing the registration?', error: err})
-        })
+        response
+            .cookie("userToken", userToken, process.env.SECRET_KEY, {
+                httpOnly: true
+            })
+            .json({ message: "SUCCESS!!" });
     }
+
+
+
+    // register = ( request, response ) => {
+    //     console.log(request.body)
+    //     DatingProfile.find({ email: request.body.email })
+    //     .then((validEmail) => {
+    //         // console.log("NOT A DUPLICATE EMAIL", validEmail)
+    //         if (validEmail.length === 0) {
+    //             DatingProfile.create(request.body)
+    //             .then(newUser => {
+    //                 console.log("THIS IS A NEW USER", newUser)
+    //                 const userToken = jwt.sign({
+    //                     id: user._id,
+    //                     firstName: user.firstName
+    //                     // jwt.io testing / verifying if cookie has been processed
+    //                 }, process.env.SECRET_KEY);
+        
+    //                 response
+    //                     .cookie("userToken", userToken, process.env.SECRET_KEY, {
+    //                         httpOnly: true
+    //                     })
+    //                     .json({ message: "SUCCESS!!", newUser: newUser });
+    //             })
+    //             .catch((err) => {
+    //                 response.json({ message: 'ERRRRRRORRRRRRRRR wheres my web token!', error: err})
+    //             })
+    //         } else {
+    //             response.json({ errors: { email: { message: "This email is already taken" }}})
+    //         }
+    //     })
+    //     .catch((err) => {
+    //         response.json({ message: 'ERRRRRRORRRRRRRRR missing the registration?', error: err})
+    //     })
+    // }
 
 
     // =============================================================
