@@ -10,67 +10,71 @@ class DatingProfileController {
     // =============================================================
 
     register = async( request, response ) => {
-        const email = await DatingProfile.find({ email: request.body.email })
-        if ( email === null ) {
-            return response.sendStatus(400);
+        try {
+            const validEmail = await DatingProfile.find({ email: request.body.email })
+
+            const newUser = await DatingProfile.create( validEmail )
+
+            const userToken = jwt.sign({ id: user._id, firstName: user.firstName }, newUser, process.env.SECRET_KEY);
+
+            response
+                .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
+                .json({ message: "SUCCESS!!" });
+        } catch {
+            console.err('ERRRRRRORRRRRRRRR unable to register user', errors)
         }
 
-        const validEmail = await DatingProfile.create( request.body )
-        if ( validEmail.length === 0 ) {
-            return response.sendStatus(400);
-        }
 
-        const userToken = jwt.sign({
-            id: user._id,
-            firstName: user.firstName
-        }, process.env.SECRET_KEY);
-        
-        response
-            .cookie("userToken", userToken, process.env.SECRET_KEY, {
-                httpOnly: true
-            })
-            .json({ message: "SUCCESS!!" });
-    }
+    // register = async( request, response ) => {
 
+    //     const validEmail = await DatingProfile.find({ email: request.body.email })
+    //     if ( validEmail.length === 0 ) {
+    //         return response.sendStatus(400);
+    //         // response.json({ errors: { email: { message: "This email is already taken" }}})
+    //     }
 
+    //     const newUser = await DatingProfile.create( request.body )
+    //     if ( newUser === null ) {
+    //         return response.sendStatus(400);
+    //     }
 
-    // register = ( request, response ) => {
-    //     console.log(request.body)
-    //     DatingProfile.find({ email: request.body.email })
-    //     .then((validEmail) => {
-    //         // console.log("NOT A DUPLICATE EMAIL", validEmail)
-    //         if (validEmail.length === 0) {
-    //             DatingProfile.create(request.body)
-    //             .then(newUser => {
-    //                 console.log("THIS IS A NEW USER", newUser)
-    //                 const userToken = jwt.sign({
-    //                     id: user._id,
-    //                     firstName: user.firstName
-    //                     // jwt.io testing / verifying if cookie has been processed
-    //                 }, process.env.SECRET_KEY);
-        
-    //                 response
-    //                     .cookie("userToken", userToken, process.env.SECRET_KEY, {
-    //                         httpOnly: true
-    //                     })
-    //                     .json({ message: "SUCCESS!!", newUser: newUser });
-    //             })
-    //             .catch((err) => {
-    //                 response.json({ message: 'ERRRRRRORRRRRRRRR wheres my web token!', error: err})
-    //             })
-    //         } else {
-    //             response.json({ errors: { email: { message: "This email is already taken" }}})
-    //         }
-    //     })
-    //     .catch((err) => {
-    //         response.json({ message: 'ERRRRRRORRRRRRRRR missing the registration?', error: err})
-    //     })
+    //     const userToken = jwt.sign({
+    //         id: user._id,
+    //         firstName: user.firstName
+    //     }, process.env.SECRET_KEY);
+
+    //     response
+    //         .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
+    //         .json({ message: "SUCCESS!!" });
+    //     // response.json({ message: 'ERRRRRRORRRRRRRRR wheres my web token!', error: err})
     // }
 
 
     // =============================================================
     // LOGIN
     // =============================================================
+
+    // login = async( request, response ) => {
+    //     try {
+    //         const user = await DatingProfile.findOne({ email: request.body.email });
+            
+    //         const correctPassword = await bcrypt.compare( request.body.password, user.password );
+    //         if (!correctPassword) {
+    //             return response.sendStatus(400);
+    //         }
+
+    //         const userToken = jwt.sign({
+    //             id: user._id,
+    //             firstName: user.firstName
+    //         }, process.env.SECRET_KEY);
+    //         // SECRET_KEY = w/e we named the variable for the SECRET_KEY
+    //         response
+    //             .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
+    //             .json({ message: "SUCCESS!!" });
+    //     } catch {
+    //         console.log('ERRRRRRORRRRRRRRR unable to log in user!')
+    //     }
+    // }
 
     login = async( request, response ) => {
         const user = await DatingProfile.findOne({ email: request.body.email });
@@ -93,11 +97,10 @@ class DatingProfileController {
         // SECRET_KEY = w/e we named the variable for the SECRET_KEY
 
         response
-            .cookie("userToken", userToken, process.env.SECRET_KEY, {
-                httpOnly: true
-            })
+            .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
             .json({ message: "SUCCESS!!" });
     }
+
 
     // =============================================================
     // LOGGED IN USER
@@ -115,7 +118,6 @@ class DatingProfileController {
             response.json({ message: 'ERRRRRRORRRRRRRRR user not logged in!', error: err})
         })
     }
-
 
 
     // =============================================================
