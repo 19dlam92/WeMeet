@@ -31,8 +31,8 @@ const DatingProfileSchema = new mongoose.Schema({
 }, { timestamps: true })
 
 DatingProfileSchema.virtual('confirmPassword')
-    .get( () => this.confirmPassword )
-    .set( () => this.confirmPassword = value );
+    .get( () => this._confirmPassword )
+    .set( () => this._confirmPassword = value );
     // virtual create a "temporary field"
     // creates a property called "confirmPassword"
     // getter and setter creates "temporary fields" for confirmPassword

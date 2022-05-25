@@ -9,45 +9,58 @@ class DatingProfileController {
     // REGISTER
     // =============================================================
 
+    // register = async( request, response ) => { //---> CURRENTLY broken code MODIFY <---
+    //     try {
+    //         const validEmail = await DatingProfile.find({ email: request.body.email })
+    //         if ( validEmail.length === 0 ) {
+    //             response.json({ errors: { email: { message: 'ERRRRRRORRRRRRRRR This email is already taken', error: err }}})
+    //         }
+
+    //         const newUser = await DatingProfile.create( validEmail )
+    //         if ( newUser === null ) {
+    //             response.json({ message: 'ERRRRRRORRRRRRRRR unable to create a new user', error: err})
+    //         }
+
+    //         const userToken = jwt.sign({ id: user._id, firstName: user.firstName }, newUser, process.env.SECRET_KEY);
+
+    //         response
+    //             .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
+    //             .json({ message: "SUCCESS!!" });
+    //         if ( userToken === null ) {
+    //             response.json({ message: 'ERRRRRRORRRRRRRRR wheres my web token!', error: err})
+    //         }
+
+    //     } catch {
+    //         console.err('ERRRRRRORRRRRRRRR unable to register user', errors)
+    //     }
+
+
     register = async( request, response ) => {
-        try {
-            const validEmail = await DatingProfile.find({ email: request.body.email })
 
-            const newUser = await DatingProfile.create( validEmail )
-
-            const userToken = jwt.sign({ id: user._id, firstName: user.firstName }, newUser, process.env.SECRET_KEY);
-
-            response
-                .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
-                .json({ message: "SUCCESS!!" });
-        } catch {
-            console.err('ERRRRRRORRRRRRRRR unable to register user', errors)
+        const validEmail = await DatingProfile.find({ email: request.body.email })
+        if ( validEmail.length === 0 ) {
+            // return response.sendStatus(400);
+            response.json({ errors: { email: { message: 'ERRRRRRORRRRRRRRR This email is already taken'}}})
         }
 
+        const newUser = await DatingProfile.create( request.body )
+        if ( newUser === null ) {
+            // return response.sendStatus(400);
+            response.json({ message: 'ERRRRRRORRRRRRRRR unable to create a new user'})
+        }
 
-    // register = async( request, response ) => {
+        const userToken = jwt.sign({
+            id: user._id,
+            email: user.email
+        }, process.env.SECRET_KEY);
 
-    //     const validEmail = await DatingProfile.find({ email: request.body.email })
-    //     if ( validEmail.length === 0 ) {
-    //         return response.sendStatus(400);
-    //         // response.json({ errors: { email: { message: "This email is already taken" }}})
-    //     }
-
-    //     const newUser = await DatingProfile.create( request.body )
-    //     if ( newUser === null ) {
-    //         return response.sendStatus(400);
-    //     }
-
-    //     const userToken = jwt.sign({
-    //         id: user._id,
-    //         firstName: user.firstName
-    //     }, process.env.SECRET_KEY);
-
-    //     response
-    //         .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
-    //         .json({ message: "SUCCESS!!" });
-    //     // response.json({ message: 'ERRRRRRORRRRRRRRR wheres my web token!', error: err})
-    // }
+        response
+            .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
+            .json({ message: "SUCCESS!!" });
+        if ( userToken === null ) {
+            response.json({ message: 'ERRRRRRORRRRRRRRR wheres my web token!'})
+        }
+    }
 
 
     // =============================================================
@@ -92,7 +105,7 @@ class DatingProfileController {
 
         const userToken = jwt.sign({
             id: user._id,
-            firstName: user.firstName
+            email: user.email
         }, process.env.SECRET_KEY);
         // SECRET_KEY = w/e we named the variable for the SECRET_KEY
 
@@ -209,6 +222,6 @@ class DatingProfileController {
     }
 
 
-} 
+}
 
 module.exports = new DatingProfileController();
