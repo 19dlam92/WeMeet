@@ -12,23 +12,14 @@ class DatingProfileController {
     // register = async( request, response ) => { //---> CURRENTLY broken code MODIFY <---
     //     try {
     //         const validEmail = await DatingProfile.find({ email: request.body.email })
-    //         if ( validEmail.length === 0 ) {
-    //             response.json({ errors: { email: { message: 'ERRRRRRORRRRRRRRR This email is already taken', error: err }}})
-    //         }
 
     //         const newUser = await DatingProfile.create( validEmail )
-    //         if ( newUser === null ) {
-    //             response.json({ message: 'ERRRRRRORRRRRRRRR unable to create a new user', error: err})
-    //         }
 
-    //         const userToken = jwt.sign({ id: user._id, firstName: user.firstName }, newUser, process.env.SECRET_KEY);
+    //         const accessToken = jwt.sign({ id: user._id, firstName: user.firstName }, newUser, process.env.SECRET_KEY);
 
     //         response
-    //             .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
+    //             .cookie("accessToken", accessToken, process.env.SECRET_KEY, { httpOnly: true })
     //             .json({ message: "SUCCESS!!" });
-    //         if ( userToken === null ) {
-    //             response.json({ message: 'ERRRRRRORRRRRRRRR wheres my web token!', error: err})
-    //         }
 
     //     } catch {
     //         console.err('ERRRRRRORRRRRRRRR unable to register user', errors)
@@ -39,29 +30,29 @@ class DatingProfileController {
 
         const validEmail = await DatingProfile.find({ email: request.body.email })
         if ( validEmail.length === 0 ) {
-            // return response.sendStatus(400);
             response.json({ errors: { email: { message: 'ERRRRRRORRRRRRRRR This email is already taken'}}})
         }
 
         const newUser = await DatingProfile.create( request.body )
         if ( newUser === null ) {
-            // return response.sendStatus(400);
             response.json({ message: 'ERRRRRRORRRRRRRRR unable to create a new user'})
         }
 
-        const userToken = jwt.sign({
+        const accessToken = jwt.sign({
             id: user._id,
             email: user.email
         }, process.env.SECRET_KEY);
 
         response
-            .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
+            .cookie("accessToken", accessToken, process.env.SECRET_KEY, { httpOnly: true })
             .json({ message: "SUCCESS!!" });
-        if ( userToken === null ) {
+        if ( accessToken === null ) {
             response.json({ message: 'ERRRRRRORRRRRRRRR wheres my web token!'})
         }
     }
 
+
+    // https://www.bezkoder.com/react-jwt-auth/
 
     // =============================================================
     // LOGIN
@@ -76,13 +67,13 @@ class DatingProfileController {
     //             return response.sendStatus(400);
     //         }
 
-    //         const userToken = jwt.sign({
+    //         const accessToken = jwt.sign({
     //             id: user._id,
     //             firstName: user.firstName
     //         }, process.env.SECRET_KEY);
     //         // SECRET_KEY = w/e we named the variable for the SECRET_KEY
     //         response
-    //             .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
+    //             .cookie("accessToken", accessToken, process.env.SECRET_KEY, { httpOnly: true })
     //             .json({ message: "SUCCESS!!" });
     //     } catch {
     //         console.log('ERRRRRRORRRRRRRRR unable to log in user!')
@@ -103,14 +94,14 @@ class DatingProfileController {
             return response.sendStatus(400);
         }
 
-        const userToken = jwt.sign({
+        const accessToken = jwt.sign({
             id: user._id,
             email: user.email
         }, process.env.SECRET_KEY);
         // SECRET_KEY = w/e we named the variable for the SECRET_KEY
 
         response
-            .cookie("userToken", userToken, process.env.SECRET_KEY, { httpOnly: true })
+            .cookie("accessToken", accessToken, process.env.SECRET_KEY, { httpOnly: true })
             .json({ message: "SUCCESS!!" });
     }
 
@@ -120,7 +111,7 @@ class DatingProfileController {
     // =============================================================
 
     loggedInUser = ( request, response ) => {
-        const decodedJWT = jwt.decode(request.cookie.userToken, { complete: true })
+        const decodedJWT = jwt.decode(request.cookie.accessToken, { complete: true })
         // decode = gets info from a cookie
         // decodedJWT = has info about the user in "payload"
         DatingProfile.findOne({ _id: decodedJWT.payload.id })
@@ -138,7 +129,7 @@ class DatingProfileController {
     // =============================================================
 
     logout = ( request, response ) => {
-        response.clearCookie("userToken");
+        response.clearCookie("accessToken");
         response.sendStatus(200);
     }
 
