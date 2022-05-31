@@ -30,6 +30,7 @@ class DatingProfileController {
 
         const validEmail = await DatingProfile.find({ email: request.body.email })
         if ( validEmail.length === 0 ) {
+        // if ( validEmail.length &&  ) {
             response.json({ errors: { email: { message: 'ERRRRRRORRRRRRRRR This email is already taken'}}})
         }
 
